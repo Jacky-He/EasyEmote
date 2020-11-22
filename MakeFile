@@ -1,0 +1,8 @@
+CC=gcc
+CFLAGS=-Wall -Wextra -Werror -Wshadow -pedantic -g
+LIB=
+GIVEN1=
+
+safe:
+	$(CC) $(CFLAGS) -DDEBUG $(LIB) $(GIVEN1) alterkeys.c \
+	    -o alterkeys
