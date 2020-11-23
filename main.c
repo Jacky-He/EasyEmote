@@ -1,5 +1,9 @@
 #include <ApplicationServices/ApplicationServices.h>
 #include <Carbon/Carbon.h>
+#include "lib/vector.h"
+#include "lib/salloc.h"
+
+vector_t v;
 
 CFStringRef createStringForKey(CGKeyCode keyCode)
 {
@@ -69,15 +73,34 @@ CGKeyCode keyCodeForChar(const char c)
 
 
 
-void sendStringOnAlt (char *str, int len, CGEventType type)
+void sendStringOnAlt (char *str, size_t len)
 {
     for (int i = 0; i < len; i++)
     {
-        CGEventRef event = CGEventCreateKeyboardEvent(NULL, keyCodeForChar(str[i]), type == kCGEventKeyDown);
+        CGEventRef event = CGEventCreateKeyboardEvent(NULL, keyCodeForChar(str[i]), true);
         CGEventSetFlags(event, kCGEventFlagMaskShift | kCGEventFlagMaskAlternate);
         CGEventPost(kCGAnnotatedSessionEventTap, event);
         CFRelease(event);
     }
+}
+
+void backspaceNTimes(size_t n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        CGEventRef event = CGEventCreateKeyboardEvent(NULL, keyCodeForChar('\b'), true);
+        CGEventPost(kCGAnnotatedSessionEventTap, event);
+        CFRelease (event);
+    }
+}
+
+char *process_vector(vector_t vec)
+{
+    char *text = smalloc(vsize(vec) + 1);
+    for (int i = 0; i < vsize(vec); i++) text[i] = velem_at(vec, i);
+    text [vsize(vec)] = 0;
+    printf("%s\n", text);
+    return "d83d+dc83";
 }
 
 CGEventRef myCGEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon)
@@ -90,12 +113,30 @@ CGEventRef myCGEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef
     UniChar *inputString = malloc(sizeof(UniChar)*2);
     CGEventKeyboardGetUnicodeString(event, 1, &cnt, inputString);
     if (cnt == 0) return event;
-    if (inputString[0] == 'a')
+    if (type == kCGEventKeyUp) return event;
+    
+    if (inputString[0] == ' ') vclear(v);
+    else if ((inputString[0] == ':') ^ !vempty(v)) vpush_back(v, inputString[0]);
+    else if (inputString[0] == ':' && !vempty(v))
     {
-        sendStringOnAlt("d83d+dc83", 9, type);
+        vpush_back(v, inputString[0]);
+        char *emotestr = process_vector(v);
+        if (emotestr != NULL)
+        {
+            
+            backspaceNTimes(vsize(v) - 1);
+            sendStringOnAlt(emotestr, strlen(emotestr));
+//            free(emotestr);
+        }
+        vclear(v);
         CGEventSetType(event, kCGEventKeyUp);
     }
-    free(inputString);
+//    if (inputString[0] == 'a')
+//    {
+//        sendStringOnAlt("d83d+dc83", 9, type);
+//        CGEventSetType(event, kCGEventKeyUp);
+//    }
+//    free(inputString);
 
     //We must return the event for it to be useful.
     return event;
@@ -116,6 +157,8 @@ int main(void)
         fprintf(stderr, "failed to create event tap\n");
         exit(1);
     }
+    //initialize vector
+    v = v_new();
     
     //Create a run loop source
     runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0);
@@ -130,7 +173,9 @@ int main(void)
     CFRunLoopRun();
 
     //In a real program, one would have arranged for cleaning up
+    vfree(v);
     
     exit(0);
     
 }
+
