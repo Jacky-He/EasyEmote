@@ -1,0 +1,624 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8A9F4254256C281000A153BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9F4253256C281000A153BA /* AppDelegate.swift */; };
+		8A9F4256256C281000A153BA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9F4255256C281000A153BA /* ContentView.swift */; };
+		8A9F4259256C281000A153BA /* EasyEmoteMacOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A9F4257256C281000A153BA /* EasyEmoteMacOS.xcdatamodeld */; };
+		8A9F425B256C281200A153BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A9F425A256C281200A153BA /* Assets.xcassets */; };
+		8A9F425E256C281200A153BA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A9F425D256C281200A153BA /* Preview Assets.xcassets */; };
+		8A9F4261256C281200A153BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A9F425F256C281200A153BA /* Main.storyboard */; };
+		8A9F426D256C281300A153BA /* EasyEmoteMacOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9F426C256C281300A153BA /* EasyEmoteMacOSTests.swift */; };
+		8A9F4278256C281300A153BA /* EasyEmoteMacOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9F4277256C281300A153BA /* EasyEmoteMacOSUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8A9F4269256C281300A153BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A9F4248256C281000A153BA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8A9F424F256C281000A153BA;
+			remoteInfo = EasyEmoteMacOS;
+		};
+		8A9F4274256C281300A153BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A9F4248256C281000A153BA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8A9F424F256C281000A153BA;
+			remoteInfo = EasyEmoteMacOS;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8A9F4250256C281000A153BA /* EasyEmoteMacOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyEmoteMacOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A9F4253256C281000A153BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8A9F4255256C281000A153BA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8A9F4258256C281000A153BA /* EasyEmoteMacOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EasyEmoteMacOS.xcdatamodel; sourceTree = "<group>"; };
+		8A9F425A256C281200A153BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8A9F425D256C281200A153BA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8A9F4260256C281200A153BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8A9F4262256C281200A153BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A9F4263256C281200A153BA /* EasyEmoteMacOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EasyEmoteMacOS.entitlements; sourceTree = "<group>"; };
+		8A9F4268256C281300A153BA /* EasyEmoteMacOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyEmoteMacOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A9F426C256C281300A153BA /* EasyEmoteMacOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyEmoteMacOSTests.swift; sourceTree = "<group>"; };
+		8A9F426E256C281300A153BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A9F4273256C281300A153BA /* EasyEmoteMacOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyEmoteMacOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A9F4277256C281300A153BA /* EasyEmoteMacOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyEmoteMacOSUITests.swift; sourceTree = "<group>"; };
+		8A9F4279256C281300A153BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A9F4295256C341600A153BA /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8A9F424D256C281000A153BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A9F4265256C281300A153BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A9F4270256C281300A153BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8A9F4247256C281000A153BA = {
+			isa = PBXGroup;
+			children = (
+				8A9F4252256C281000A153BA /* EasyEmoteMacOS */,
+				8A9F426B256C281300A153BA /* EasyEmoteMacOSTests */,
+				8A9F4276256C281300A153BA /* EasyEmoteMacOSUITests */,
+				8A9F4251256C281000A153BA /* Products */,
+				8A9F4294256C341500A153BA /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		8A9F4251256C281000A153BA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8A9F4250256C281000A153BA /* EasyEmoteMacOS.app */,
+				8A9F4268256C281300A153BA /* EasyEmoteMacOSTests.xctest */,
+				8A9F4273256C281300A153BA /* EasyEmoteMacOSUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8A9F4252256C281000A153BA /* EasyEmoteMacOS */ = {
+			isa = PBXGroup;
+			children = (
+				8A9F4253256C281000A153BA /* AppDelegate.swift */,
+				8A9F4255256C281000A153BA /* ContentView.swift */,
+				8A9F425A256C281200A153BA /* Assets.xcassets */,
+				8A9F425F256C281200A153BA /* Main.storyboard */,
+				8A9F4262256C281200A153BA /* Info.plist */,
+				8A9F4263256C281200A153BA /* EasyEmoteMacOS.entitlements */,
+				8A9F4257256C281000A153BA /* EasyEmoteMacOS.xcdatamodeld */,
+				8A9F425C256C281200A153BA /* Preview Content */,
+			);
+			path = EasyEmoteMacOS;
+			sourceTree = "<group>";
+		};
+		8A9F425C256C281200A153BA /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				8A9F425D256C281200A153BA /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8A9F426B256C281300A153BA /* EasyEmoteMacOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				8A9F426C256C281300A153BA /* EasyEmoteMacOSTests.swift */,
+				8A9F426E256C281300A153BA /* Info.plist */,
+			);
+			path = EasyEmoteMacOSTests;
+			sourceTree = "<group>";
+		};
+		8A9F4276256C281300A153BA /* EasyEmoteMacOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8A9F4277256C281300A153BA /* EasyEmoteMacOSUITests.swift */,
+				8A9F4279256C281300A153BA /* Info.plist */,
+			);
+			path = EasyEmoteMacOSUITests;
+			sourceTree = "<group>";
+		};
+		8A9F4294256C341500A153BA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8A9F4295256C341600A153BA /* ApplicationServices.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8A9F424F256C281000A153BA /* EasyEmoteMacOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A9F427C256C281300A153BA /* Build configuration list for PBXNativeTarget "EasyEmoteMacOS" */;
+			buildPhases = (
+				8A9F424C256C281000A153BA /* Sources */,
+				8A9F424D256C281000A153BA /* Frameworks */,
+				8A9F424E256C281000A153BA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EasyEmoteMacOS;
+			productName = EasyEmoteMacOS;
+			productReference = 8A9F4250256C281000A153BA /* EasyEmoteMacOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8A9F4267256C281300A153BA /* EasyEmoteMacOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A9F427F256C281300A153BA /* Build configuration list for PBXNativeTarget "EasyEmoteMacOSTests" */;
+			buildPhases = (
+				8A9F4264256C281300A153BA /* Sources */,
+				8A9F4265256C281300A153BA /* Frameworks */,
+				8A9F4266256C281300A153BA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8A9F426A256C281300A153BA /* PBXTargetDependency */,
+			);
+			name = EasyEmoteMacOSTests;
+			productName = EasyEmoteMacOSTests;
+			productReference = 8A9F4268256C281300A153BA /* EasyEmoteMacOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8A9F4272256C281300A153BA /* EasyEmoteMacOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A9F4282256C281300A153BA /* Build configuration list for PBXNativeTarget "EasyEmoteMacOSUITests" */;
+			buildPhases = (
+				8A9F426F256C281300A153BA /* Sources */,
+				8A9F4270256C281300A153BA /* Frameworks */,
+				8A9F4271256C281300A153BA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8A9F4275256C281300A153BA /* PBXTargetDependency */,
+			);
+			name = EasyEmoteMacOSUITests;
+			productName = EasyEmoteMacOSUITests;
+			productReference = 8A9F4273256C281300A153BA /* EasyEmoteMacOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8A9F4248256C281000A153BA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1220;
+				LastUpgradeCheck = 1220;
+				TargetAttributes = {
+					8A9F424F256C281000A153BA = {
+						CreatedOnToolsVersion = 12.2;
+					};
+					8A9F4267256C281300A153BA = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = 8A9F424F256C281000A153BA;
+					};
+					8A9F4272256C281300A153BA = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = 8A9F424F256C281000A153BA;
+					};
+				};
+			};
+			buildConfigurationList = 8A9F424B256C281000A153BA /* Build configuration list for PBXProject "EasyEmoteMacOS" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8A9F4247256C281000A153BA;
+			productRefGroup = 8A9F4251256C281000A153BA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8A9F424F256C281000A153BA /* EasyEmoteMacOS */,
+				8A9F4267256C281300A153BA /* EasyEmoteMacOSTests */,
+				8A9F4272256C281300A153BA /* EasyEmoteMacOSUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8A9F424E256C281000A153BA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A9F4261256C281200A153BA /* Main.storyboard in Resources */,
+				8A9F425E256C281200A153BA /* Preview Assets.xcassets in Resources */,
+				8A9F425B256C281200A153BA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A9F4266256C281300A153BA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A9F4271256C281300A153BA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8A9F424C256C281000A153BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A9F4259256C281000A153BA /* EasyEmoteMacOS.xcdatamodeld in Sources */,
+				8A9F4256256C281000A153BA /* ContentView.swift in Sources */,
+				8A9F4254256C281000A153BA /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A9F4264256C281300A153BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A9F426D256C281300A153BA /* EasyEmoteMacOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A9F426F256C281300A153BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A9F4278256C281300A153BA /* EasyEmoteMacOSUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8A9F426A256C281300A153BA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8A9F424F256C281000A153BA /* EasyEmoteMacOS */;
+			targetProxy = 8A9F4269256C281300A153BA /* PBXContainerItemProxy */;
+		};
+		8A9F4275256C281300A153BA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8A9F424F256C281000A153BA /* EasyEmoteMacOS */;
+			targetProxy = 8A9F4274256C281300A153BA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8A9F425F256C281200A153BA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8A9F4260256C281200A153BA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8A9F427A256C281300A153BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8A9F427B256C281300A153BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		8A9F427D256C281300A153BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = EasyEmoteMacOS/EasyEmoteMacOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"EasyEmoteMacOS/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = EasyEmoteMacOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.heja.dmoj.EasyEmoteMacOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		8A9F427E256C281300A153BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = EasyEmoteMacOS/EasyEmoteMacOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"EasyEmoteMacOS/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = EasyEmoteMacOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.heja.dmoj.EasyEmoteMacOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		8A9F4280256C281300A153BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = EasyEmoteMacOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.heja.dmoj.EasyEmoteMacOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EasyEmoteMacOS.app/Contents/MacOS/EasyEmoteMacOS";
+			};
+			name = Debug;
+		};
+		8A9F4281256C281300A153BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = EasyEmoteMacOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.heja.dmoj.EasyEmoteMacOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EasyEmoteMacOS.app/Contents/MacOS/EasyEmoteMacOS";
+			};
+			name = Release;
+		};
+		8A9F4283256C281300A153BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = EasyEmoteMacOSUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.heja.dmoj.EasyEmoteMacOSUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = EasyEmoteMacOS;
+			};
+			name = Debug;
+		};
+		8A9F4284256C281300A153BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = EasyEmoteMacOSUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.heja.dmoj.EasyEmoteMacOSUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = EasyEmoteMacOS;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8A9F424B256C281000A153BA /* Build configuration list for PBXProject "EasyEmoteMacOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A9F427A256C281300A153BA /* Debug */,
+				8A9F427B256C281300A153BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8A9F427C256C281300A153BA /* Build configuration list for PBXNativeTarget "EasyEmoteMacOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A9F427D256C281300A153BA /* Debug */,
+				8A9F427E256C281300A153BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8A9F427F256C281300A153BA /* Build configuration list for PBXNativeTarget "EasyEmoteMacOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A9F4280256C281300A153BA /* Debug */,
+				8A9F4281256C281300A153BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8A9F4282256C281300A153BA /* Build configuration list for PBXNativeTarget "EasyEmoteMacOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A9F4283256C281300A153BA /* Debug */,
+				8A9F4284256C281300A153BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8A9F4257256C281000A153BA /* EasyEmoteMacOS.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8A9F4258256C281000A153BA /* EasyEmoteMacOS.xcdatamodel */,
+			);
+			currentVersion = 8A9F4258256C281000A153BA /* EasyEmoteMacOS.xcdatamodel */;
+			path = EasyEmoteMacOS.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 8A9F4248256C281000A153BA /* Project object */;
+}
