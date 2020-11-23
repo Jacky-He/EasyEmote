@@ -71,6 +71,24 @@ CGKeyCode keyCodeForChar(const char c)
     return (CGKeyCode)code;
 }
 
+char *unicodeToUTF16(uint32_t c)
+{
+    if (c > 0xDF77 && c < 0xE000) return NULL;
+    if (c <= 0xDF77 || (c >= 0xE000 && c <= 0xFFFF))
+    {
+        char *res = smalloc(sizeof(char)*5);
+        sprintf(res, "%04x", c);
+        res[4] = 0;
+        return res;
+    }
+    c -= 0x10000;
+    uint32_t i1 = (54 << 10) + ((c >> 10)&1023);
+    uint32_t i2 = (55 << 10) + (c&1023);
+    char *res = smalloc(sizeof(char)*10);
+    sprintf(res, "%04x+%04x", i1, i2);
+    res[9] = 0;
+    return res;
+}
 
 
 void sendStringOnAlt (char *str, size_t len)
@@ -100,7 +118,7 @@ char *process_vector(vector_t vec)
     for (int i = 0; i < vsize(vec); i++) text[i] = velem_at(vec, i);
     text [vsize(vec)] = 0;
     printf("%s\n", text);
-    return "d83d+dc83";
+    return unicodeToUTF16(0x1F483);
 }
 
 CGEventRef myCGEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon)
@@ -126,10 +144,10 @@ CGEventRef myCGEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef
             
             backspaceNTimes(vsize(v) - 1);
             sendStringOnAlt(emotestr, strlen(emotestr));
-//            free(emotestr);
+            free(emotestr);
+            CGEventSetType(event, kCGEventKeyUp);
         }
         vclear(v);
-        CGEventSetType(event, kCGEventKeyUp);
     }
 //    if (inputString[0] == 'a')
 //    {
@@ -147,6 +165,7 @@ int main(void)
     CFMachPortRef eventTap;
     CGEventMask eventMask;
     CFRunLoopSourceRef runLoopSource;
+
     
     //Create an event tap. We are interested in key presses
     eventMask = ((1 << kCGEventKeyDown) | (1 << kCGEventKeyUp));
