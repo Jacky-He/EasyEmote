@@ -13,9 +13,9 @@ import Carbon
 class UIApplication
 {
     static let shared = UIApplication();
-    var contentView: ContentView?;
     var charBuffer: [String] = [String](repeating: "", count: 0);
     var emojiTree: Trie = Trie();
+    var window: NSWindow?;
 }
 
 func unicodeToUTF16(str: String) -> String
@@ -55,7 +55,7 @@ func loadData()
             let parts = lines[i].components(separatedBy: ":");
             let codestr = parts[0].trimmingCharacters(in: .whitespacesAndNewlines);
             let descr = parts[1].trimmingCharacters(in: .whitespacesAndNewlines);
-            UIApplication.shared.emojiTree.insert(word: descr, codestr: codestrToOutput(str: codestr));
+            UIApplication.shared.emojiTree.insert(word: descr, codestr: codestrToOutput(str: codestr), unicodestr: codestr);
         }
     }
     catch {print("error getting contents of file");}
@@ -130,11 +130,26 @@ func processBuffer() -> String
     return UIApplication.shared.emojiTree.get_code_str(descr: sum) ?? "";
 }
 
-func processChoices() -> [(String, String)]
+func processChoices() -> [(String, String, String)]
 {
     var sum = "";
     for i in 1..<UIApplication.shared.charBuffer.count {sum += UIApplication.shared.charBuffer[i];}
     return UIApplication.shared.emojiTree.get_most_relevant(input: sum);
+}
+
+func makeWindowVisible()
+{
+    var screenPos : NSPoint = NSEvent.mouseLocation;
+    UIApplication.shared.window?.layoutIfNeeded();
+//    screenPos.y += UIApplication.shared.window?.frame.height ?? 0;
+    UIApplication.shared.window?.setFrameTopLeftPoint(screenPos)
+    UIApplication.shared.window?.orderFrontRegardless();
+}
+
+func makeWindowInvisible()
+{
+    UIApplication.shared.window?.orderBack(nil);
+    UIApplication.shared.window?.setIsVisible(false);
 }
 
 func myCGEventCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent, refcon: UnsafeMutableRawPointer?) -> Unmanaged<CGEvent>?
@@ -150,7 +165,11 @@ func myCGEventCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent
     else if ((input == Character(":")) ^ !UIApplication.shared.charBuffer.isEmpty)
     {
         UIApplication.shared.charBuffer.append(String(input));
-        print(processChoices());
+        EmoteChoices.shared.choices = processChoices();
+        print(EmoteChoices.shared.choices);
+        
+        //make window appear
+        makeWindowVisible();
     }
     else if (input == Character(":") && !UIApplication.shared.charBuffer.isEmpty)
     {
@@ -165,6 +184,9 @@ func myCGEventCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent
             event.type = .keyUp;
         }
         UIApplication.shared.charBuffer.removeAll();
+        
+        //make window disappear
+        makeWindowInvisible()
     }
     return Unmanaged.passRetained(event);
 }

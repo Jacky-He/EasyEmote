@@ -13,8 +13,9 @@ class TrieNode<T:Hashable>
     weak var parent: TrieNode?;
     var children: [T: TrieNode] = [:];
     var codestr: String = "";
+    var unicodestr: String = "";
     var cnt:Int = 0;
-    var isTerminating = false;
+    var isTerminating : Bool = false;
     
     init(value: T? = nil, parent: TrieNode? = nil)
     {
@@ -42,7 +43,7 @@ class Trie
 
 extension Trie
 {
-    func insert(word: String, codestr: String)
+    func insert(word: String, codestr: String, unicodestr: String)
     {
         guard !word.isEmpty else {return;}
         var curr = root;
@@ -61,6 +62,7 @@ extension Trie
         }
         curr.isTerminating = true;
         curr.codestr = codestr;
+        curr.unicodestr = unicodestr;
     }
     
     func contains(word: String) -> Bool
@@ -92,27 +94,43 @@ extension Trie
         return nil;
     }
     
-    private func shortest_five (node: Node) -> [(String, String)]
+    func get_unicode_str(descr: String) -> String?
+    {
+        guard !descr.isEmpty else {return nil;}
+        var curr = root;
+        let characters = Array(descr);
+        var idx = 0;
+        while idx < characters.count, let child = curr.children[characters[idx]]
+        {
+            idx += 1;
+            curr = child;
+        }
+        if (idx == characters.count && curr.isTerminating) {return curr.unicodestr;}
+        return nil;
+    }
+    
+    private func shortest_five (node: Node) -> [(String, String, String)]
     {
         return []; //bogus
     }
     
-    private func recurse(node: Node, num: Int) -> [(String, String)]
+    //broken
+    private func recurse(node: Node, num: Int) -> [(String, String, String)]
     {
         //@requires num > 0;
         var remain = num;
-        var res: [(String, String)] = [];
+        var res: [(String, String, String)] = [];
         if (node.isTerminating)
         {
             remain -= 1;
-            res.append(("", node.codestr));
+            res.append(("", node.codestr, node.unicodestr));
         }
         for (_ , value) in node.children
         {
+            if (remain <= 0) {break;} //possibly broken
             let sub = min(remain, value.cnt);
-            res += recurse(node: value, num: sub);
+            res.append(contentsOf: recurse(node: value, num: sub));
             remain -= sub;
-            if (remain <= 0) {break;}
         }
         for i in 0..<res.count
         {
@@ -121,12 +139,12 @@ extension Trie
         return res;
     }
     
-    private func random_five(node: Node) -> [(String, String)]
+    private func random_five(node: Node) -> [(String, String, String)]
     {
         return recurse(node: node, num: 5);
     }
     
-    func get_most_relevant(input: String) -> [(String, String)] //first: emojidescr, second: code str
+    func get_most_relevant(input: String) -> [(String, String, String)] //first: emojidescr, second: code str, third: unicode str
     {
         guard !input.isEmpty else {return [];}
         var curr = root;

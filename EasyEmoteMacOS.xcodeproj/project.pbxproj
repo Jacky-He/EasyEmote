@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8A9F4254256C281000A153BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9F4253256C281000A153BA /* AppDelegate.swift */; };
-		8A9F4256256C281000A153BA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9F4255256C281000A153BA /* ContentView.swift */; };
+		8A9F4256256C281000A153BA /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9F4255256C281000A153BA /* SelectionView.swift */; };
 		8A9F4259256C281000A153BA /* EasyEmoteMacOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A9F4257256C281000A153BA /* EasyEmoteMacOS.xcdatamodeld */; };
 		8A9F425B256C281200A153BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A9F425A256C281200A153BA /* Assets.xcassets */; };
 		8A9F425E256C281200A153BA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A9F425D256C281200A153BA /* Preview Assets.xcassets */; };
@@ -18,6 +18,7 @@
 		8A9F42B2256C628E00A153BA /* emojiStore.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8A9F42B1256C628E00A153BA /* emojiStore.txt */; };
 		8A9F42B7256C8E0A00A153BA /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9F42B6256C8E0A00A153BA /* UIApplication.swift */; };
 		8A9F42BF256D50AD00A153BA /* Trie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9F42BE256D50AD00A153BA /* Trie.swift */; };
+		8A9F42C4256DAA2400A153BA /* EmoteChoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9F42C3256DAA2400A153BA /* EmoteChoices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +41,7 @@
 /* Begin PBXFileReference section */
 		8A9F4250256C281000A153BA /* EasyEmoteMacOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyEmoteMacOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A9F4253256C281000A153BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8A9F4255256C281000A153BA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8A9F4255256C281000A153BA /* SelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
 		8A9F4258256C281000A153BA /* EasyEmoteMacOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EasyEmoteMacOS.xcdatamodel; sourceTree = "<group>"; };
 		8A9F425A256C281200A153BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A9F425D256C281200A153BA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -57,6 +58,7 @@
 		8A9F42B1256C628E00A153BA /* emojiStore.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = emojiStore.txt; sourceTree = "<group>"; };
 		8A9F42B6256C8E0A00A153BA /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		8A9F42BE256D50AD00A153BA /* Trie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trie.swift; sourceTree = "<group>"; };
+		8A9F42C3256DAA2400A153BA /* EmoteChoices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmoteChoices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,9 +112,10 @@
 			children = (
 				8A9F42B0256C626800A153BA /* Data */,
 				8A9F4253256C281000A153BA /* AppDelegate.swift */,
+				8A9F42C3256DAA2400A153BA /* EmoteChoices.swift */,
 				8A9F42B6256C8E0A00A153BA /* UIApplication.swift */,
 				8A9F42BE256D50AD00A153BA /* Trie.swift */,
-				8A9F4255256C281000A153BA /* ContentView.swift */,
+				8A9F4255256C281000A153BA /* SelectionView.swift */,
 				8A9F425A256C281200A153BA /* Assets.xcassets */,
 				8A9F425F256C281200A153BA /* Main.storyboard */,
 				8A9F4262256C281200A153BA /* Info.plist */,
@@ -299,8 +302,9 @@
 				8A9F42BF256D50AD00A153BA /* Trie.swift in Sources */,
 				8A9F42B7256C8E0A00A153BA /* UIApplication.swift in Sources */,
 				8A9F4259256C281000A153BA /* EasyEmoteMacOS.xcdatamodeld in Sources */,
-				8A9F4256256C281000A153BA /* ContentView.swift in Sources */,
+				8A9F4256256C281000A153BA /* SelectionView.swift in Sources */,
 				8A9F4254256C281000A153BA /* AppDelegate.swift in Sources */,
+				8A9F42C4256DAA2400A153BA /* EmoteChoices.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
