@@ -17,6 +17,7 @@
 		8A9F4278256C281300A153BA /* EasyEmoteMacOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9F4277256C281300A153BA /* EasyEmoteMacOSUITests.swift */; };
 		8A9F42B2256C628E00A153BA /* emojiStore.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8A9F42B1256C628E00A153BA /* emojiStore.txt */; };
 		8A9F42B7256C8E0A00A153BA /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9F42B6256C8E0A00A153BA /* UIApplication.swift */; };
+		8A9F42BF256D50AD00A153BA /* Trie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9F42BE256D50AD00A153BA /* Trie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		8A9F4295256C341600A153BA /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
 		8A9F42B1256C628E00A153BA /* emojiStore.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = emojiStore.txt; sourceTree = "<group>"; };
 		8A9F42B6256C8E0A00A153BA /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		8A9F42BE256D50AD00A153BA /* Trie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				8A9F42B0256C626800A153BA /* Data */,
 				8A9F4253256C281000A153BA /* AppDelegate.swift */,
 				8A9F42B6256C8E0A00A153BA /* UIApplication.swift */,
+				8A9F42BE256D50AD00A153BA /* Trie.swift */,
 				8A9F4255256C281000A153BA /* ContentView.swift */,
 				8A9F425A256C281200A153BA /* Assets.xcassets */,
 				8A9F425F256C281200A153BA /* Main.storyboard */,
@@ -293,6 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A9F42BF256D50AD00A153BA /* Trie.swift in Sources */,
 				8A9F42B7256C8E0A00A153BA /* UIApplication.swift in Sources */,
 				8A9F4259256C281000A153BA /* EasyEmoteMacOS.xcdatamodeld in Sources */,
 				8A9F4256256C281000A153BA /* ContentView.swift in Sources */,

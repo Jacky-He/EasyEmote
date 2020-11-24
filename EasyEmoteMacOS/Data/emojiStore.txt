@@ -1,4 +1,4 @@
-1F600                                                  :grinning_face
+1F600                                                  :grinning_face 
 1F603                                                  :grinning_face_with_big_eyes
 1F604                                                  :grinning_face_with_smiling_eyes
 1F601                                                  :beaming_face_with_smiling_eyes
@@ -17,7 +17,6 @@
 1F618                                                  :face_blowing_a_kiss
 1F617                                                  :kissing_face
 263A FE0F                                              :smiling_face
-263A                                                   :smiling_face
 1F61A                                                  :kissing_face_with_closed_eyes
 1F619                                                  :kissing_face_with_smiling_eyes
 1F972                                                  :smiling_face_with_tear
@@ -71,7 +70,6 @@
 1F61F                                                  :worried_face
 1F641                                                  :slightly_frowning_face
 2639 FE0F                                              :frowning_face
-2639                                                   :frowning_face
 1F62E                                                  :face_with_open_mouth
 1F62F                                                  :hushed_face
 1F632                                                  :astonished_face
@@ -218,7 +216,6 @@
 1F90F 1F3FE                                            :pinching_hand;medium_dark_skin_tone
 1F90F 1F3FF                                            :pinching_hand;dark_skin_tone
 270C FE0F                                              :victory_hand
-270C                                                   :victory_hand
 270C 1F3FB                                             :victory_hand;light_skin_tone
 270C 1F3FC                                             :victory_hand;medium_light_skin_tone
 270C 1F3FD                                             :victory_hand;medium_skin_tone
@@ -279,7 +276,6 @@
 1F447 1F3FE                                            :backhand_index_pointing_down;medium_dark_skin_tone
 1F447 1F3FF                                            :backhand_index_pointing_down;dark_skin_tone
 261D FE0F                                              :index_pointing_up
-261D                                                   :index_pointing_up
 261D 1F3FB                                             :index_pointing_up;light_skin_tone
 261D 1F3FC                                             :index_pointing_up;medium_light_skin_tone
 261D 1F3FD                                             :index_pointing_up;medium_skin_tone
@@ -353,7 +349,6 @@
 1F64F 1F3FE                                            :folded_hands;medium_dark_skin_tone
 1F64F 1F3FF                                            :folded_hands;dark_skin_tone
 270D FE0F                                              :writing_hand
-270D                                                   :writing_hand
 270D 1F3FB                                             :writing_hand;light_skin_tone
 270D 1F3FC                                             :writing_hand;medium_light_skin_tone
 270D 1F3FD                                             :writing_hand;medium_skin_tone

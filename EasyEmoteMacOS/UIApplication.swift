@@ -15,18 +15,18 @@ class UIApplication
     static let shared = UIApplication();
     var contentView: ContentView?;
     var charBuffer: [String] = [String](repeating: "", count: 0);
-    var emojiDict: [String : String] = [:];
+    var emojiTree: Trie = Trie();
 }
 
 func unicodeToUTF16(str: String) -> String
 {
     guard var num = UInt32(str, radix: 16) else {return "";}
     if (num > 0xDF77 && num < 0xE000) {return "";}
-    if (num <= 0xDF77 || (num >= 0xE000 && num <= 0xFFFF)) {return str;}
+    if (num <= 0xDF77 || (num >= 0xE000 && num <= 0xFFFF)) {return str.uppercased();}
     num -= 0x10000;
     let i1 : UInt32 = (54 << 10) + ((num >> 10)&1023);
     let i2: UInt32 = (55 << 10) + (num&1023);
-    return String(i1, radix: 16) + "+" + String(i2, radix: 16);
+    return (String(i1, radix: 16) + "+" + String(i2, radix: 16)).uppercased();
 }
 
 func codestrToOutput(str: String) -> String
@@ -55,7 +55,7 @@ func loadData()
             let parts = lines[i].components(separatedBy: ":");
             let codestr = parts[0].trimmingCharacters(in: .whitespacesAndNewlines);
             let descr = parts[1].trimmingCharacters(in: .whitespacesAndNewlines);
-            UIApplication.shared.emojiDict[descr] = codestrToOutput(str: codestr);
+            UIApplication.shared.emojiTree.insert(word: descr, codestr: codestrToOutput(str: codestr));
         }
     }
     catch {print("error getting contents of file");}
@@ -127,7 +127,14 @@ func processBuffer() -> String
 {
     var sum = "";
     for i in 1..<UIApplication.shared.charBuffer.count - 1{sum += UIApplication.shared.charBuffer[i];}
-    return UIApplication.shared.emojiDict[sum] ?? "";
+    return UIApplication.shared.emojiTree.get_code_str(descr: sum) ?? "";
+}
+
+func processChoices() -> [(String, String)]
+{
+    var sum = "";
+    for i in 1..<UIApplication.shared.charBuffer.count {sum += UIApplication.shared.charBuffer[i];}
+    return UIApplication.shared.emojiTree.get_most_relevant(input: sum);
 }
 
 func myCGEventCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent, refcon: UnsafeMutableRawPointer?) -> Unmanaged<CGEvent>?
@@ -140,11 +147,17 @@ func myCGEventCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent
     
     let input : Character = Character(UnicodeScalar(inputString) ?? UnicodeScalar(0));
     if (input == Character(" ")) {UIApplication.shared.charBuffer.removeAll();}
-    else if ((input == Character(":")) ^ !UIApplication.shared.charBuffer.isEmpty) {UIApplication.shared.charBuffer.append(String(input));}
+    else if ((input == Character(":")) ^ !UIApplication.shared.charBuffer.isEmpty)
+    {
+        UIApplication.shared.charBuffer.append(String(input));
+        print(processChoices());
+    }
     else if (input == Character(":") && !UIApplication.shared.charBuffer.isEmpty)
     {
         UIApplication.shared.charBuffer.append(String(input));
         let emoteStr = processBuffer();
+        print(emoteStr);
+        
         if (emoteStr != "")
         {
             backSpaceNTimes(n: UInt32(UIApplication.shared.charBuffer.count) - UInt32(1));
