@@ -12,83 +12,16 @@ import CoreGraphics
 import ApplicationServices
 import Carbon
 
-
-func createStringForKey(keyCode: CGKeyCode) -> String?
-{
-    let maxNameLength = 4;
-    var nameBuffer = [UniChar](repeating: 0, count: maxNameLength);
-    var nameLength = 0;
-    
-    let modifierKeys = UInt32(alphaLock >> 8) & 0xFF // Caps Lock
-    var deadKeys: UInt32 = 0;
-    let keyboardType = UInt32(LMGetKbdType());
-    
-    let source = TISCopyCurrentKeyboardLayoutInputSource().takeRetainedValue()
-    guard let ptr = TISGetInputSourceProperty(source, kTISPropertyUnicodeKeyLayoutData)
-    else {print("Could not get keyboard layout data"); return nil}
-    
-    let layoutData = Unmanaged<CFData>.fromOpaque(ptr).takeUnretainedValue() as Data;
-    
-    let osStatus = layoutData.withUnsafeBytes {
-        UCKeyTranslate($0.bindMemory(to: UCKeyboardLayout.self).baseAddress, keyCode, UInt16(kUCKeyActionDown), modifierKeys, keyboardType, UInt32(kUCKeyTranslateNoDeadKeysMask), &deadKeys, maxNameLength, &nameLength, &nameBuffer)
-    };
-    guard osStatus == noErr else {print("Code: 0x%04X Status: %+i", keyCode, osStatus); return nil;}
-    return String(utf16CodeUnits: nameBuffer, count: nameLength);
-}
-
-func keyCodeForChar(c: Character) -> CGKeyCode?
-{
-    var dict : [String : CGKeyCode] = [:];
-    for i in 0...127
-    {
-        guard let s = createStringForKey(keyCode: CGKeyCode(i)) else {continue;}
-        dict[s] = CGKeyCode(i);
-    }
-    return dict[String(c)];
-}
-
-func sendStringOnAlt(str: String)
-{
-    let src = CGEventSource(stateID: .privateState);
-    for i in 0..<str.count
-    {
-        let idx = str.index(str.startIndex, offsetBy: i);
-        guard let c = keyCodeForChar(c: str[idx]) else {continue;}
-        let event = CGEvent(keyboardEventSource: src, virtualKey: c, keyDown: true);
-        event?.flags = [.maskShift, .maskAlternate];
-        let loc = CGEventTapLocation.cghidEventTap;
-        event?.post(tap: loc);
-    }
-}
-
-func myCGEventCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent, refcon: UnsafeMutableRawPointer?) -> Unmanaged<CGEvent>?
-{
-    if (type != .keyDown) {return Unmanaged.passRetained(event);}
-    var cnt = 0;
-    var inputString = UniChar();
-    event.keyboardGetUnicodeString(maxStringLength: 2, actualStringLength: &cnt, unicodeString: &inputString);
-    if (cnt == 0) {return Unmanaged.passRetained(event);}
-    
-    if (inputString == "a".unicodeScalars.map{$0.value}.reduce(0, +))
-    {
-        sendStringOnAlt(str: "D83D+DC83");
-        event.type = .keyUp;
-    }
-    return Unmanaged.passRetained(event);
-}
-
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     var window: NSWindow!
 
-    
-
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
         let contentView = ContentView().environment(\.managedObjectContext, persistentContainer.viewContext)
-
+//        UIApplication.shared.contentView = contentView as! ContentView;
         // Create the window and set the content view.
         window = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
@@ -99,6 +32,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.setFrameAutosaveName("Main Window")
         window.contentView = NSHostingView(rootView: contentView)
         window.makeKeyAndOrderFront(nil)
+        
+        //load emoji data
+        loadData();
         
         //create run loop
         let eventMask:CGEventMask = (1 << CGEventType.keyDown.rawValue);
