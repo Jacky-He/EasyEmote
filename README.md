@@ -1,7 +1,7 @@
 # EasyEmote
 A very small-scale application that allows users to type emojis almost everywhere in a similar fashion as Discord and Slack. 
-Deployment Target: MacOS 10.15+
-Application Zip File: 
+
+Deployment Target: MacOS 10.15+ Application Zip File: 
 
 When using the application, make sure you are using the Unicode Hex Input Keyboard.
 
