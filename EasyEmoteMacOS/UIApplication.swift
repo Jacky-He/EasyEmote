@@ -16,7 +16,16 @@ class UIApplication
     var charBuffer: [String] = [String](repeating: "", count: 0);
     var emojiTree: Trie = Trie();
     var window: NSWindow?;
+    var visible: Bool = false;
 }
+
+//class InputControl: NSControl, NSControlTextEditingDelegate
+//{
+//    static let shared = InputControl();
+//    func controlTextDidBeginEditing(_ obj: Notification) {
+//        print("something");
+//    }
+//}
 
 func unicodeToUTF16(str: String) -> String
 {
@@ -45,7 +54,6 @@ func codestrToOutput(str: String) -> String
 func loadData()
 {
     let dir = Bundle.main.url(forResource: "emojiStore", withExtension: "txt")!;
-    print(dir);
     do {
         let inputString = try String(contentsOf: dir, encoding: .utf8);
         let lines = inputString.components(separatedBy: .newlines);
@@ -55,7 +63,7 @@ func loadData()
             let parts = lines[i].components(separatedBy: ":");
             let codestr = parts[0].trimmingCharacters(in: .whitespacesAndNewlines);
             let descr = parts[1].trimmingCharacters(in: .whitespacesAndNewlines);
-            UIApplication.shared.emojiTree.insert(word: descr, codestr: codestrToOutput(str: codestr), unicodestr: codestr);
+            UIApplication.shared.emojiTree.insert(word: ":"+descr+":", codestr: codestrToOutput(str: codestr), unicodestr: codestr);
         }
     }
     catch {print("error getting contents of file");}
@@ -126,15 +134,17 @@ func sendStringOnAlt(str: String)
 func processBuffer() -> String
 {
     var sum = "";
-    for i in 1..<UIApplication.shared.charBuffer.count - 1{sum += UIApplication.shared.charBuffer[i];}
+    for i in 0..<UIApplication.shared.charBuffer.count {sum += UIApplication.shared.charBuffer[i];}
     return UIApplication.shared.emojiTree.get_code_str(descr: sum) ?? "";
 }
 
-func processChoices() -> [(String, String, String)]
+func processChoices()
 {
     var sum = "";
-    for i in 1..<UIApplication.shared.charBuffer.count {sum += UIApplication.shared.charBuffer[i];}
-    return UIApplication.shared.emojiTree.get_most_relevant(input: sum);
+    for i in 0..<UIApplication.shared.charBuffer.count {sum += UIApplication.shared.charBuffer[i];}
+    EmoteChoices.shared.choices = UIApplication.shared.emojiTree.get_most_relevant(input: sum);
+    if (EmoteChoices.shared.choices.count == 0) {EmoteChoices.shared.chosenIdx = 0;}
+    else {EmoteChoices.shared.chosenIdx = max(min(EmoteChoices.shared.choices.count - 1, EmoteChoices.shared.chosenIdx), 0);}
 }
 
 func makeWindowVisible()
@@ -144,12 +154,14 @@ func makeWindowVisible()
 //    screenPos.y += UIApplication.shared.window?.frame.height ?? 0;
     UIApplication.shared.window?.setFrameTopLeftPoint(screenPos)
     UIApplication.shared.window?.orderFrontRegardless();
+    UIApplication.shared.visible = true;
 }
 
 func makeWindowInvisible()
 {
     UIApplication.shared.window?.orderBack(nil);
     UIApplication.shared.window?.setIsVisible(false);
+    UIApplication.shared.visible = false;
 }
 
 func myCGEventCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent, refcon: UnsafeMutableRawPointer?) -> Unmanaged<CGEvent>?
@@ -159,23 +171,59 @@ func myCGEventCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent
     var inputString = UniChar();
     event.keyboardGetUnicodeString(maxStringLength: 2, actualStringLength: &cnt, unicodeString: &inputString);
     if (cnt == 0) {return Unmanaged.passRetained(event);}
-    
+    let keycode = event.getIntegerValueField(.keyboardEventKeycode);
+//    let keyboardtype = event.getIntegerValueField(.keyboardEventKeyboardType);
     let input : Character = Character(UnicodeScalar(inputString) ?? UnicodeScalar(0));
-    if (input == Character(" ")) {UIApplication.shared.charBuffer.removeAll();}
+    
+    if (input == Character("\u{8}")) //BACKSPACE
+    {
+        if (!UIApplication.shared.charBuffer.isEmpty) {UIApplication.shared.charBuffer.removeLast();}
+        processChoices();
+        print(EmoteChoices.shared.choices);
+        if (EmoteChoices.shared.choices.count > 0) {makeWindowVisible();}
+        else{makeWindowInvisible();}
+    }
+    else if (keycode == 76 || keycode == 36)//RETURN/ENTER
+    {
+        if (EmoteChoices.shared.choices.count > 0)
+        {
+            backSpaceNTimes(n: UInt32(UIApplication.shared.charBuffer.count));
+            //@assert 0 <= EmoteChoices.shared.chosenIdx < \length(EmoteChoices.shared.choices);
+            sendStringOnAlt(str: EmoteChoices.shared.choices[EmoteChoices.shared.chosenIdx].1);
+            event.type = .keyUp;
+            UIApplication.shared.charBuffer.removeAll();
+        }
+    }
+    else if (keycode == 126) //UP ARROW
+    {
+        let cnt = EmoteChoices.shared.choices.count;
+        if (cnt > 0)
+        {
+            EmoteChoices.shared.chosenIdx = (EmoteChoices.shared.chosenIdx - 1 + cnt)%cnt;
+        }
+    }
+    else if (keycode == 125) //DOWN ARROW
+    {
+        let cnt = EmoteChoices.shared.choices.count;
+        if (cnt > 0)
+        {
+            EmoteChoices.shared.chosenIdx = (EmoteChoices.shared.chosenIdx + 1)%cnt;
+        }
+    }
     else if ((input == Character(":")) ^ !UIApplication.shared.charBuffer.isEmpty)
     {
         UIApplication.shared.charBuffer.append(String(input));
-        EmoteChoices.shared.choices = processChoices();
+        processChoices();
         print(EmoteChoices.shared.choices);
         
         //make window appear
-        makeWindowVisible();
+        if (EmoteChoices.shared.choices.count > 0){makeWindowVisible();}
+        else{makeWindowInvisible();}
     }
     else if (input == Character(":") && !UIApplication.shared.charBuffer.isEmpty)
     {
         UIApplication.shared.charBuffer.append(String(input));
         let emoteStr = processBuffer();
-        print(emoteStr);
         
         if (emoteStr != "")
         {

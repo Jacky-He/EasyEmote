@@ -3847,7 +3847,6 @@
 1F5DE                                                  :rolled_up_newspaper
 1F4D1                                                  :bookmark_tabs
 1F516                                                  :bookmark
-1F3F7 FE0F                                             :label
 1F3F7                                                  :label
 1F4B0                                                  :money_bag
 1FA99                                                  :coin
@@ -4073,23 +4072,15 @@
 1F51D                                                  :TOP_arrow
 1F6D0                                                  :place_of_worship
 269B FE0F                                              :atom_symbol
-269B                                                   :atom_symbol
 1F549 FE0F                                             :om
-1F549                                                  :om
 2721 FE0F                                              :star_of_David
-2721                                                   :star_of_David
 2638 FE0F                                              :wheel_of_dharma
-2638                                                   :wheel_of_dharma
 262F FE0F                                              :yin_yang
 262F                                                   :yin_yang
 271D FE0F                                              :latin_cross
-271D                                                   :latin_cross
 2626 FE0F                                              :orthodox_cross
-2626                                                   :orthodox_cross
 262A FE0F                                              :star_and_crescent
-262A                                                   :star_and_crescent
 262E FE0F                                              :peace_symbol
-262E                                                   :peace_symbol
 1F54E                                                  :menorah
 1F52F                                                  :dotted_six_pointed_star
 2648                                                   :Aries

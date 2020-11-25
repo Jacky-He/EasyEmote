@@ -13,4 +13,5 @@ final class EmoteChoices: ObservableObject
 {
     static let shared = EmoteChoices();
     @Published var choices : [(String, String, String)] = []; //first: string descr second: string code
+    @Published var chosenIdx: Int = 0;
 }

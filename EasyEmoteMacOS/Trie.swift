@@ -46,6 +46,7 @@ extension Trie
     func insert(word: String, codestr: String, unicodestr: String)
     {
         guard !word.isEmpty else {return;}
+        if (contains(word: word)) {return;}
         var curr = root;
         let characters = Array(word);
         curr.cnt += 1;
@@ -114,7 +115,7 @@ extension Trie
         return []; //bogus
     }
     
-    //broken
+    
     private func recurse(node: Node, num: Int) -> [(String, String, String)]
     {
         //@requires num > 0;
@@ -127,7 +128,7 @@ extension Trie
         }
         for (_ , value) in node.children
         {
-            if (remain <= 0) {break;} //possibly broken
+            if (remain <= 0) {break;}
             let sub = min(remain, value.cnt);
             res.append(contentsOf: recurse(node: value, num: sub));
             remain -= sub;
@@ -139,9 +140,9 @@ extension Trie
         return res;
     }
     
-    private func random_five(node: Node) -> [(String, String, String)]
+    private func random_n(node: Node, maxlength: Int) -> [(String, String, String)]
     {
-        return recurse(node: node, num: 5);
+        return recurse(node: node, num: maxlength);
     }
     
     func get_most_relevant(input: String) -> [(String, String, String)] //first: emojidescr, second: code str, third: unicode str
@@ -156,7 +157,7 @@ extension Trie
             curr = child;
         }
         if (idx < characters.count) {return [];}
-        var temp = random_five(node: curr);
+        var temp = random_n(node: curr, maxlength: 10);
         var inputcopy = input;
         inputcopy.removeLast();
         for i in 0..<temp.count {temp[i].0 = inputcopy + temp[i].0;}

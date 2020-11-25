@@ -9,14 +9,6 @@ import SwiftUI
 
 struct SelectionView: View {
     @EnvironmentObject var emoteChoices: EmoteChoices;
-//    var strs: [(String, String, String)] = [
-//        ("kiss;medium_light_skin_tone", "D83D+DC8F+D83C+DFFC", "1F48F 1F3FC"),
-//        ("kiss;medium_dark_skin_tone", "D83D+DC8F+D83C+DFFE", "1F48F 1F3FE"),
-//        ("kiss;medium_skin_tone", "D83D+DC8F+D83C+DFFD", "1F48F 1F3FD"),
-//        ("kiss;man_man", "D83D+DC68+200D+2764+200D+D83D+DC8B+200D+D83D+DC68", "1F468 200D 2764 200D 1F48B 200D 1F468"),
-//        ("kiss;man_man_medium_dark_skin_tone", "D83D+DC68+D83C+DFFE+200D+2764+200D+D83D+DC8B+200D+D83D+DC68+D83C+DFFE", "1F468 1F3FE 200D 2764 200D 1F48B 200D 1F468 1F3FE"),
-//        ("kiss;man_man_medium_dark_skin_tone_light_skin_tone", "D83D+DC68+D83C+DFFE+200D+2764+200D+D83D+DC8B+200D+D83D+DC68+D83C+DFFB", "1F468 1F3FE 200D 2764 200D 1F48B 200D 1F468 1F3FB")
-//    ];
     
     func convertToEmoteStr(str: String) -> String
     {
@@ -38,7 +30,6 @@ struct SelectionView: View {
             }
         }
         .frame(width: 600)
-        .padding(10)
         .background(Color.white.opacity(0.8))
         .cornerRadius(20)
         .overlay(
@@ -56,12 +47,27 @@ struct EmojiDescrRow: View {
     var emotestr: String;
     
     var body: some View {
-        HStack
+        if (emoteChoices.choices.count > 0 && emoteChoices.choices[emoteChoices.chosenIdx].0 == descrstr)
         {
-            Text(emotestr).font(.system(size: 15));
-            Text(":" + descrstr + ":").font(.custom("Chalkboard", size: 15))
-            Spacer();
-        }.padding([.top, .bottom], 5)
+            HStack
+            {
+                Text(emotestr).font(.system(size: 15));
+                Text(descrstr).font(.custom("Chalkboard", size: 15))
+                Spacer();
+            }.padding([.top, .bottom], 5)
+            .padding([.leading, .trailing], 10)
+            .background(Color.gray.opacity(0.5))
+        }
+        else
+        {
+            HStack
+            {
+                Text(emotestr).font(.system(size: 15));
+                Text(descrstr).font(.custom("Chalkboard", size: 15))
+                Spacer();
+            }.padding([.top, .bottom], 5)
+            .padding([.leading, .trailing], 10)
+        }
     }
 }
 
