@@ -1,4 +1,4 @@
-# FOR UPDATED VERSION, SEE THIS REPO: https://github.com/Jacky-He/EasyEmoteMacOS
+This is an old repo, FOR UPDATED VERSION, SEE THIS REPO: https://github.com/Jacky-He/EasyEmoteMacOS
 
 # EasyEmote
 A very small-scale application that allows users to type emojis almost everywhere in a similar fashion as Discord and Slack. 
